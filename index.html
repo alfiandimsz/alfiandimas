@@ -119,14 +119,119 @@ footer h2{color:var(--ink)}
 .rv.in{opacity:1;transform:none}
 @media (max-width:44rem){.about{grid-template-columns:1fr}.avatar{width:12rem}nav b{display:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+
+/* Print / Save as PDF Landscape Optimization */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm 12mm;
+  }
+  :root, [data-theme=dark] {
+    --bg: #ffffff;
+    --card: #ffffff;
+    --ink: #23233b;
+    --muted: #52556e;
+    --line: #dcdbf0;
+    --shadow: none;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  body {
+    background: #fff !important;
+    font-size: 9.5pt;
+    line-height: 1.5;
+  }
+  body::before, nav, #top, #toast, dialog, .btns, #stabs, #pf, .type::after, .acc summary::after {
+    display: none !important;
+  }
+  .wrap {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  .rv {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero {
+    padding: 0 0 1.2rem !important;
+    border-bottom: 1.5px solid var(--line);
+  }
+  .hero .wrap {
+    flex-wrap: nowrap !important;
+    gap: 2rem !important;
+  }
+  h1 {
+    font-size: 2.2rem !important;
+    margin: 0.3rem 0 !important;
+  }
+  .avatar {
+    width: 8.5rem !important;
+    flex-shrink: 0;
+    border-radius: 24px !important;
+  }
+  section {
+    padding: 1.4rem 0 0.5rem !important;
+  }
+  h2 {
+    font-size: 1.35rem !important;
+  }
+  .sub {
+    margin-bottom: 0.8rem !important;
+    font-size: 0.85rem;
+  }
+  .about {
+    grid-template-columns: 1.6fr 1fr !important;
+    gap: 1rem !important;
+  }
+  .stats {
+    grid-template-columns: repeat(4, 1fr) !important;
+    margin-top: 0.8rem !important;
+  }
+  .stat {
+    padding: 0.6rem !important;
+  }
+  .stat b {
+    font-size: 1.4rem !important;
+  }
+  .grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.9rem !important;
+  }
+  .cover {
+    aspect-ratio: 16/8 !important;
+  }
+  .pb {
+    padding: 0.8rem !important;
+  }
+  .card, .proj, .acc, .award, .hero {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    border-radius: 14px !important;
+  }
+  .acc summary {
+    padding: 0.7rem 1rem 0.3rem !important;
+  }
+  .ab {
+    padding: 0 1rem 0.8rem !important;
+  }
+  .gal {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.4rem !important;
+  }
+  footer {
+    margin-top: 1.5rem !important;
+    padding: 1rem 0 !important;
+    border-top: 1px solid var(--line);
+  }
+}
 </style>
 <script>
-/* Finds each photo automatically: in images/ or next to index.html, with .jpg/.jpeg/.png/.webp (also uppercase). Hides the photo if none exist. */
-function fb(i){var E=["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"],F=["images/",""],d=i.dataset;
-if(!d.name){d.name=i.getAttribute("src").replace(/^.*\//,"").replace(/\.[A-Za-z]+$/,"")}
-var B=[d.name].concat(d.alt?[d.alt]:[]),s=+(d.s||0)+1;
-if(s>=B.length*F.length*E.length){var v=i.closest(".avatar");if(v)v.style.display="none";else i.remove();return}
-d.s=s;i.src=F[Math.floor(s/E.length)%F.length]+B[Math.floor(s/(E.length*F.length))]+"."+E[s%E.length]}
+/* Tries other photo extensions automatically: .jpg, .jpeg, .png, .webp (also uppercase). Hides the photo if none exist. */
+function fb(i){var E=["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"],n=+(i.dataset.e||0)+1;
+if(n>=E.length){if(i.dataset.alt){var b=i.dataset.alt;delete i.dataset.alt;i.dataset.e=0;i.src=i.src.replace(/[^\/]+\.[A-Za-z]+(\?.*)?$/,b+".jpg");return}var v=i.closest(".avatar");if(v)v.style.display="none";else i.remove();return}
+i.dataset.e=n;i.src=i.src.replace(/\.[A-Za-z]+(\?.*)?$/,"."+E[n])}
 </script>
 </head>
 <body>
@@ -142,7 +247,7 @@ d.s=s;i.src=F[Math.floor(s/E.length)%F.length]+B[Math.floor(s/(E.length*F.length
 <h1>Alfian Dimas <span class="grad">Febrian</span></h1>
 <p class="type" aria-live="off">I build <span id="w">embedded systems</span></p>
 <p class="lead">Electrical Automation Engineering student at ITS Surabaya. I turn sensors, circuits and AI models into tools for disaster mitigation and safety.</p>
-<div class="btns"><a class="btn main" href="CV_Alfian_Dimas_Febrian.pdf" download>Download CV</a><a class="btn" href="#projects">See my projects</a></div>
+<div class="btns"><a class="btn main" href="CV_Alfian_Dimas_Febrian.pdf" download>Download CV</a><button class="btn" onclick="window.print()">Save Portfolio PDF</button><a class="btn" href="#projects">See my projects</a></div>
 </div>
 <div class="avatar"><img src="images/profile.jpg" data-alt="profil" alt="Portrait of Alfian Dimas Febrian" onerror="fb(this)"></div>
 </div></header>
@@ -156,7 +261,7 @@ d.s=s;i.src=F[Math.floor(s/E.length)%F.length]+B[Math.floor(s/(E.length*F.length
 <p>I also lead cross-functional technical teams, manage campus organization divisions, and do disaster mitigation research.</p>
 </div>
 <div class="card side">
-<a href="https://www.linkedin.com/in/alfian-dimas-3a90a8411/"><small>LinkedIn</small>alfian-dimas</a>
+<a href="https://www.linkedin.com/in/alfian-dimas-febrian-3a90a8411/"><small>LinkedIn</small>alfian-dimas</a>
 <button id="mail" data-mail="alfianfebrian81@gmail.com"><small>Email (tap to copy)</small>alfianfebrian81@gmail.com</button>
 <a href="#contact"><small>Based in</small>Surabaya, Indonesia</a>
 </div>
@@ -208,7 +313,7 @@ const SK={"Hardware":["ESP32 / ESP32-S3","Raspberry Pi 5","ATmega328 / ATmega16"
 "Soft skills":["Multidisciplinary team leadership","Integrated system troubleshooting","Research project management","Technical documentation","Workshop instruction"]};
 
 const PR=[
-{k:"SAFE",h:250,cat:"AI",t:"S.A.F.E — Smart Acoustic Fire Extinguisher",w:"May – Sep 2026 · AI development and electrical hardware",s:"A fire extinguisher prototype backed by a YOLOv5n visual validation model on edge hardware.",p:["Developed the AI model and designed the electrical hardware architecture.","Fine-tuned and deployed the YOLOv5n model on edge computing hardware.","Won Gold (presentation) and Silver (poster) in PKM-KC at PIMNAS 39."],g:["YOLOv5n","Edge AI","Electrical design"],i:["safe-1.jpg","safe-2.jpg"]},
+{k:"SAFE",h:250,cat:"AI",t:"S.A.F.E — Smart Acoustic Fire Extinguisher",w:"May – Sep 2026 · Team Lead, AI and electrical hardware",s:"A fire extinguisher prototype backed by a YOLOv5n visual validation model on edge hardware.",p:["Led the team and designed the electrical hardware architecture.","Fine-tuned and deployed the YOLOv5n model on edge computing hardware.","Won Gold (presentation) and Silver (poster) in PKM-KC at PIMNAS 39."],g:["YOLOv5n","Edge AI","Electrical design"],i:["safe-1.jpg","safe-2.jpg"]},
 {k:"FLOWS",h:200,cat:"AI IoT",t:"INSAMO FLOWS — Flood Warning System",w:"Apr – Sep 2026 · Researcher assistant",s:"IoT sensors and LSTM microservices that forecast water level for flood warnings.",p:["Built the IoT hardware integration and LSTM water level forecasting microservices.","Configured RS485 (MAX485) and Modbus RTU/TCP for ultrasonic and temperature sensors.","Designed, wired and assembled the control panel with an integrated TP-Link MR100 router."],g:["LSTM","Modbus","RS485","Docker Compose","MySQL"],i:["insamo-flows-1.jpg","insamo-flows-2.jpg"]},
 {k:"SIGMA",h:330,cat:"IoT",t:"INSAMO SIGMA — Earthquake Early Warning",w:"Apr – Jul 2026 · ITS Surabaya",s:"A seismic detection node that streams live data to a web dashboard.",p:["Developed the node with an MPU6050 accelerometer and GPS module.","Implemented the STA/LTA algorithm to filter movement noise from seismic data.","Configured Wi-Fi telemetry to stream real-time data to the web dashboard."],g:["ESP32","MPU6050","GNSS","STA/LTA"],i:["insamo-sigma-1.jpg","insamo-sigma-2.jpg"]},
 {k:"WX",h:160,cat:"IoT",t:"Low-Cost Weather Monitoring System",w:"Jan – Mar 2026 · ITS Surabaya",s:"A weather station for real-time wind, pressure, temperature and humidity.",p:["Integrated an anemometer, barometric pressure, temperature and humidity sensors.","Configured sensor interfacing and microcontroller data acquisition for continuous logging."],g:["Microcontroller","Data acquisition"],i:["weather-1.jpg","weather-2.jpg"]},
@@ -281,6 +386,20 @@ const links=$$(".links a"),so=new IntersectionObserver(es=>es.forEach(e=>{if(e.i
 $$("main section,footer").forEach(s=>so.observe(s));
 const tp=$("#top");addEventListener("scroll",()=>tp.classList.toggle("show",scrollY>600),{passive:true});
 tp.onclick=()=>scrollTo({top:0});
+
+/* Print / Save as PDF optimization */
+addEventListener("beforeprint",()=>{
+ sp.innerHTML=Object.entries(SK).map(([k,v])=>`<div style="width:100%;margin-bottom:.35rem"><b>${k}:</b> ${v.join(" · ")}</div>`).join("");
+ $$("details.acc").forEach(d=>d.open=true);
+ $$(".proj").forEach(p=>p.hidden=false);
+ $$("b[data-n]").forEach(b=>b.textContent=(+b.dataset.n).toFixed(+b.dataset.d||0));
+ w.textContent="embedded systems, IoT, PLC/SCADA & edge AI";
+});
+addEventListener("afterprint",()=>{
+ const activeTab=$(".chip[aria-pressed=true]",st)?.textContent||"Hardware";
+ sp.innerHTML=SK[activeTab].map(x=>`<span class="pill">${x}</span>`).join("");
+ $$("details.acc").forEach((d,i)=>d.open=(i===0));
+});
 </script>
 </body>
 </html>
