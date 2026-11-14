@@ -121,10 +121,12 @@ footer h2{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
 </style>
 <script>
-/* Tries other photo extensions automatically: .jpg, .jpeg, .png, .webp (also uppercase). Hides the photo if none exist. */
-function fb(i){var E=["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"],n=+(i.dataset.e||0)+1;
-if(n>=E.length){if(i.dataset.alt){var b=i.dataset.alt;delete i.dataset.alt;i.dataset.e=0;i.src=i.src.replace(/[^\/]+\.[A-Za-z]+(\?.*)?$/,b+".jpg");return}var v=i.closest(".avatar");if(v)v.style.display="none";else i.remove();return}
-i.dataset.e=n;i.src=i.src.replace(/\.[A-Za-z]+(\?.*)?$/,"."+E[n])}
+/* Finds each photo automatically: in images/ or next to index.html, with .jpg/.jpeg/.png/.webp (also uppercase). Hides the photo if none exist. */
+function fb(i){var E=["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"],F=["images/",""],d=i.dataset;
+if(!d.name){d.name=i.getAttribute("src").replace(/^.*\//,"").replace(/\.[A-Za-z]+$/,"")}
+var B=[d.name].concat(d.alt?[d.alt]:[]),s=+(d.s||0)+1;
+if(s>=B.length*F.length*E.length){var v=i.closest(".avatar");if(v)v.style.display="none";else i.remove();return}
+d.s=s;i.src=F[Math.floor(s/E.length)%F.length]+B[Math.floor(s/(E.length*F.length))]+"."+E[s%E.length]}
 </script>
 </head>
 <body>
@@ -154,7 +156,7 @@ i.dataset.e=n;i.src=i.src.replace(/\.[A-Za-z]+(\?.*)?$/,"."+E[n])}
 <p>I also lead cross-functional technical teams, manage campus organization divisions, and do disaster mitigation research.</p>
 </div>
 <div class="card side">
-<a href="https://www.linkedin.com/in/alfian-dimas-febrian-3a90a8411/"><small>LinkedIn</small>alfian-dimas</a>
+<a href="https://www.linkedin.com/in/alfian-dimas-3a90a8411/"><small>LinkedIn</small>alfian-dimas</a>
 <button id="mail" data-mail="alfianfebrian81@gmail.com"><small>Email (tap to copy)</small>alfianfebrian81@gmail.com</button>
 <a href="#contact"><small>Based in</small>Surabaya, Indonesia</a>
 </div>
