@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alfian Dimas Febrian — Portfolio</title>
+<meta name="description" content="Portfolio of Alfian Dimas Febrian, Electrical Automation Engineering student at ITS Surabaya: embedded systems, IoT, PLC/SCADA, and edge AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f2fd;--card:#fff;--ink:#23233b;--muted:#62657f;--a:#6c6ff0;--a2:#ff9db8;--line:#e3e2f6;--shadow:0 10px 30px rgba(108,111,240,.13);
+--head:Quicksand,"Segoe UI",system-ui,sans-serif;--body:Nunito,"Segoe UI",system-ui,sans-serif;color-scheme:light}
+[data-theme=dark]{--bg:#171930;--card:#22243f;--ink:#ecebff;--muted:#a9abd0;--a:#9fa1ff;--a2:#ff9db8;--line:#34365a;--shadow:0 10px 30px rgba(0,0,0,.3);color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.7 var(--body);transition:background .3s,color .3s}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(40rem 30rem at 10% 0,rgba(108,111,240,.18),transparent 60%),radial-gradient(36rem 28rem at 100% 30%,rgba(255,157,184,.2),transparent 60%),radial-gradient(34rem 26rem at 20% 100%,rgba(143,227,208,.18),transparent 60%)}
+a{color:var(--a)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--a2);outline-offset:3px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+nav{position:sticky;top:.75rem;z-index:5;margin:.75rem auto 0;width:min(62rem,calc(100% - 1.5rem));background:color-mix(in srgb,var(--card) 82%,transparent);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:99px;box-shadow:var(--shadow);display:flex;align-items:center;gap:.25rem;padding:.4rem .5rem .4rem 1.1rem}
+nav b{font:700 1.15rem var(--head);margin-right:auto}
+.links{display:flex;gap:.1rem;overflow-x:auto;scrollbar-width:none}
+.links a{color:var(--muted);text-decoration:none;padding:.35rem .8rem;border-radius:99px;white-space:nowrap;font-size:.95rem;transition:.2s}
+.links a:hover{color:var(--ink)}
+.links a.on{background:var(--a);color:#fff}
+#theme{border:0;background:var(--line);width:2.4rem;height:2.4rem;border-radius:50%;flex:0 0 auto}
+.hero{padding:4rem 0 2rem}
+.hero .wrap{display:flex;gap:3rem;align-items:center;flex-wrap:wrap}
+.hero .txt{flex:1 1 24rem}
+.hi{display:inline-block;background:var(--card);border:1px solid var(--line);padding:.25rem .9rem;border-radius:99px;color:var(--muted);box-shadow:var(--shadow)}
+h1{font:700 clamp(2.4rem,7vw,4.2rem)/1.08 var(--head);margin:1rem 0 .75rem;letter-spacing:-.02em}
+.grad{background:linear-gradient(90deg,var(--a),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.type{font:600 1.35rem var(--head);min-height:2rem}
+.type::after{content:"|";margin-left:2px;animation:bl 1s steps(1) infinite;color:var(--a2)}
+@keyframes bl{50%{opacity:0}}
+.lead{color:var(--muted);max-width:34rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1.5rem}
+.btn{border:0;text-decoration:none;padding:.75rem 1.4rem;border-radius:99px;font-weight:600;background:var(--card);color:var(--ink);box-shadow:var(--shadow);transition:transform .2s}
+.btn.main{background:linear-gradient(90deg,var(--a),#8b7bf5);color:#fff}
+.btn:hover{transform:translateY(-3px)}
+.avatar{width:16rem;aspect-ratio:1;border-radius:46% 54% 50% 50%/55% 45% 55% 45%;background:linear-gradient(135deg,var(--a),var(--a2));padding:.5rem;box-shadow:var(--shadow);transition:border-radius 1s}
+.avatar:hover{border-radius:50%}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block}
+section{padding:4rem 0 .5rem}
+h2{font:700 clamp(1.8rem,4vw,2.5rem)/1.1 var(--head);margin:0 0 .4rem}
+.sub{color:var(--muted);margin:0 0 1.75rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:1.5rem}
+.about p{color:var(--muted);margin:0 0 1rem}
+.side{padding:1.4rem;display:grid;gap:.75rem;align-content:start}
+.side a,.side button{display:block;text-align:left;border:1px solid var(--line);background:transparent;border-radius:16px;padding:.7rem 1rem;text-decoration:none;color:var(--ink);transition:.2s;overflow-wrap:anywhere}
+.side a:hover,.side button:hover{border-color:var(--a);background:color-mix(in srgb,var(--a) 10%,transparent)}
+.side small{display:block;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:1rem;margin-top:1.5rem}
+.stat{padding:1.1rem;text-align:center}
+.stat b{display:block;font:700 2rem var(--head);color:var(--a)}
+.stat span{color:var(--muted);font-size:.9rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.chip{border:1px solid var(--line);background:var(--card);padding:.4rem 1.1rem;border-radius:99px;transition:.2s}
+.chip:hover{border-color:var(--a)}
+.chip[aria-pressed=true]{background:var(--a);border-color:var(--a);color:#fff}
+.pills{display:flex;flex-wrap:wrap;gap:.6rem;padding:1.4rem}
+.pill{background:color-mix(in srgb,var(--a) 12%,transparent);padding:.35rem 1rem;border-radius:99px;transition:transform .2s}
+.pill:hover{transform:scale(1.07) rotate(-2deg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.4rem}
+.proj{overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.proj:hover{transform:translateY(-6px)}
+.cover{aspect-ratio:16/10;position:relative;display:grid;place-items:center;background:linear-gradient(135deg,hsl(var(--h) 80% 80%),hsl(calc(var(--h) + 50) 85% 85%))}
+.cover::after{content:attr(data-t);font:700 2.2rem var(--head);color:rgba(35,35,59,.45)}
+.cover:has(img)::after{content:none}
+.cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pb{padding:1.1rem 1.3rem 1.3rem;flex:1;display:flex;flex-direction:column;gap:.4rem}
+.pb h3{font:700 1.2rem/1.25 var(--head);margin:0}
+.pb p{margin:0;color:var(--muted);font-size:.96rem}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto;padding-top:.5rem}
+.tags span{font-size:.8rem;background:var(--line);padding:.1rem .65rem;border-radius:99px}
+.acc{margin-bottom:.9rem;overflow:hidden}
+.acc summary{list-style:none;cursor:pointer;padding:1.1rem 1.4rem;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";font:700 1.5rem var(--head);color:var(--a);transition:transform .3s}
+.acc[open] summary::after{transform:rotate(45deg)}
+.acc summary b{font:700 1.1rem/1.3 var(--head);display:block}
+.acc summary small{color:var(--muted)}
+.ab{padding:0 1.4rem 1.3rem;color:var(--muted)}
+.ab p{margin:0 0 .5rem}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.6rem;margin-top:.75rem}
+.ph{margin:0;aspect-ratio:4/3;border-radius:16px;overflow:hidden}
+.ph:empty{display:none}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in;transition:transform .4s}
+.ph:hover img{transform:scale(1.06)}
+.award{overflow:hidden}
+.award .ph{aspect-ratio:16/9;border-radius:0}
+.award .gal{margin:0;gap:2px}
+.award .tx{padding:1rem 1.3rem}
+.award.cert .ph img{object-fit:contain;background:var(--line)}
+.award h3{font:700 1.1rem var(--head);margin:0}
+.award p{margin:.25rem 0 0;color:var(--muted)}
+dialog{border:0;border-radius:28px;padding:0;background:var(--card);color:var(--ink);width:min(40rem,92vw);max-height:88vh;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(20,20,45,.55);backdrop-filter:blur(4px)}
+dialog[open]{animation:pop .3s ease-out}
+@keyframes pop{from{transform:scale(.94);opacity:0}}
+.dl{padding:1.8rem}
+.dl h3{font:700 1.6rem/1.2 var(--head);margin:0 2rem .3rem 0}
+.dl .meta{color:var(--a);font-weight:600;margin:0 0 1rem}
+.dl ul{padding-left:1.2rem;color:var(--muted)}
+.x{position:absolute;top:1rem;right:1rem;border:0;background:var(--line);width:2.2rem;height:2.2rem;border-radius:50%}
+#lb{width:auto;max-width:94vw;background:transparent;box-shadow:none}
+#lb img{max-width:92vw;max-height:84vh;border-radius:20px;display:block}
+footer{margin-top:5rem;padding:3rem 0 4rem;text-align:center;color:var(--muted)}
+footer h2{color:var(--ink)}
+#top{position:fixed;right:1.2rem;bottom:1.2rem;width:3rem;height:3rem;border-radius:50%;border:0;background:var(--a);color:#fff;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:.3s;z-index:4}
+#top.show{opacity:1;pointer-events:auto}
+#toast{position:fixed;left:50%;bottom:1.5rem;transform:translate(-50%,200%);background:var(--ink);color:var(--bg);padding:.6rem 1.2rem;border-radius:99px;transition:transform .3s;z-index:9}
+#toast.show{transform:translate(-50%,0)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+@media (max-width:44rem){.about{grid-template-columns:1fr}.avatar{width:12rem}nav b{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+<script>
+/* Tries other photo extensions automatically: .jpg, .jpeg, .png, .webp (also uppercase). Hides the photo if none exist. */
+function fb(i){var E=["jpg","jpeg","png","webp","JPG","JPEG","PNG","WEBP"],n=+(i.dataset.e||0)+1;
+if(n>=E.length){if(i.dataset.alt){var b=i.dataset.alt;delete i.dataset.alt;i.dataset.e=0;i.src=i.src.replace(/[^\/]+\.[A-Za-z]+(\?.*)?$/,b+".jpg");return}var v=i.closest(".avatar");if(v)v.style.display="none";else i.remove();return}
+i.dataset.e=n;i.src=i.src.replace(/\.[A-Za-z]+(\?.*)?$/,"."+E[n])}
+</script>
+</head>
+<body>
+<nav aria-label="Main">
+<b>Alfian</b>
+<div class="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#awards">Awards</a><a href="#contact">Contact</a></div>
+<button id="theme" aria-label="Switch light and dark theme">🌙</button>
+</nav>
+
+<header class="hero"><div class="wrap">
+<div class="txt">
+<span class="hi">👋 Hi, I’m</span>
+<h1>Alfian Dimas <span class="grad">Febrian</span></h1>
+<p class="type" aria-live="off">I build <span id="w">embedded systems</span></p>
+<p class="lead">Electrical Automation Engineering student at ITS Surabaya. I turn sensors, circuits and AI models into tools for disaster mitigation and safety.</p>
+<div class="btns"><a class="btn main" href="CV_Alfian_Dimas_Febrian.pdf" download>Download CV</a><a class="btn" href="#projects">See my projects</a></div>
+</div>
+<div class="avatar"><img src="images/profile.jpg" data-alt="profil" alt="Portrait of Alfian Dimas Febrian" onerror="fb(this)"></div>
+</div></header>
+
+<main>
+<section id="about"><div class="wrap">
+<h2>About me</h2><p class="sub">A little about what I do.</p>
+<div class="about rv">
+<div>
+<p>I have hands-on experience in embedded systems, industrial automation, IoT hardware and computer vision. I program microcontrollers, design custom PCBs and 3D-printed enclosures, run industrial PLC systems, and deploy AI vision models (YOLO/LSTM).</p>
+<p>I also lead cross-functional technical teams, manage campus organization divisions, and do disaster mitigation research.</p>
+</div>
+<div class="card side">
+<a href="https://www.linkedin.com/in/alfian-dimas-febrian-3a90a8411/"><small>LinkedIn</small>alfian-dimas</a>
+<button id="mail" data-mail="alfianfebrian81@gmail.com"><small>Email (tap to copy)</small>alfianfebrian81@gmail.com</button>
+<a href="#contact"><small>Based in</small>Surabaya, Indonesia</a>
+</div>
+</div>
+<div class="stats">
+<div class="card stat rv"><b data-n="3.62" data-d="2">0</b><span>GPA out of 4.00</span></div>
+<div class="card stat rv"><b data-n="5">0</b><span>Technical projects</span></div>
+<div class="card stat rv"><b data-n="4">0</b><span>Teams and labs</span></div>
+<div class="card stat rv"><b data-n="3">0</b><span>Competition awards</span></div>
+</div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+<h2>Skills</h2><p class="sub">Pick a category.</p>
+<div class="chips" id="stabs"></div>
+<div class="card pills" id="spills"></div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+<h2>Projects</h2><p class="sub">Tap a card for the full story and photos.</p>
+<div class="chips" id="pf"></div>
+<div class="grid" id="pg"></div>
+</div></section>
+
+<section id="experience"><div class="wrap"><h2>Experience</h2><p class="sub">Labs, research and teams.</p><div id="ex"></div></div></section>
+<section id="education"><div class="wrap"><h2>Education</h2><p class="sub">Where I study and studied.</p><div id="ed"></div></div></section>
+<section id="awards"><div class="wrap"><h2>Awards and certifications</h2><p class="sub">&nbsp;</p><div class="grid" id="aw"></div></div></section>
+</main>
+
+<footer id="contact"><div class="wrap">
+<h2>Let’s build something together</h2>
+<p>Open to collaboration on embedded, IoT, automation and AI projects.</p>
+<div class="btns" style="justify-content:center"><a class="btn main" href="mailto:alfianfebrian81@gmail.com">Send an email</a><a class="btn" href="https://www.linkedin.com/in/alfian-dimas-3a90a8411/">LinkedIn</a></div>
+</div></footer>
+
+<button id="top" aria-label="Back to top">↑</button>
+<div id="toast" role="status"></div>
+<dialog id="dlg"><button class="x" aria-label="Close" onclick="dlg.close()">✕</button><div class="dl" id="dlb"></div></dialog>
+<dialog id="lb"><img alt=""></dialog>
+
+<script>
+const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)];
+const im=(f,a)=>`<figure class="ph"><img src="images/${f}" alt="${a}" loading="lazy" onerror="fb(this)"></figure>`;
+const calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+const SK={"Hardware":["ESP32 / ESP32-S3","Raspberry Pi 5","ATmega328 / ATmega16","Custom PCB design","3D enclosures (PETG, PLA, ASA)","Control panel wiring","A01NYUB ultrasonic","DS18B20","MPU6050","GPS/GNSS","ADS1115 ADC","RS485 (MAX485)","Modbus RTU/TCP"],
+"AI and software":["Python","PyTorch","TensorFlow","OpenCV","YOLOv5 / v8 / v11","LSTM forecasting","Docker Compose","MySQL"],
+"Automation":["Omron CX-Programmer (CP2E)","Mitsubishi GX Works (Q Series)","ScadaBR","Haiwell Cloud SCADA","Sequential control logic","Interlocking","I/O configuration"],
+"Soft skills":["Multidisciplinary team leadership","Integrated system troubleshooting","Research project management","Technical documentation","Workshop instruction"]};
+
+const PR=[
+{k:"SAFE",h:250,cat:"AI",t:"S.A.F.E — Smart Acoustic Fire Extinguisher",w:"May – Sep 2026 · Team Lead, AI and electrical hardware",s:"A fire extinguisher prototype backed by a YOLOv5n visual validation model on edge hardware.",p:["Led the team and designed the electrical hardware architecture.","Fine-tuned and deployed the YOLOv5n model on edge computing hardware.","Won Gold (presentation) and Silver (poster) in PKM-KC at PIMNAS 39."],g:["YOLOv5n","Edge AI","Electrical design"],i:["safe-1.jpg","safe-2.jpg"]},
+{k:"FLOWS",h:200,cat:"AI IoT",t:"INSAMO FLOWS — Flood Warning System",w:"Apr – Sep 2026 · Researcher assistant",s:"IoT sensors and LSTM microservices that forecast water level for flood warnings.",p:["Built the IoT hardware integration and LSTM water level forecasting microservices.","Configured RS485 (MAX485) and Modbus RTU/TCP for ultrasonic and temperature sensors.","Designed, wired and assembled the control panel with an integrated TP-Link MR100 router."],g:["LSTM","Modbus","RS485","Docker Compose","MySQL"],i:["insamo-flows-1.jpg","insamo-flows-2.jpg"]},
+{k:"SIGMA",h:330,cat:"IoT",t:"INSAMO SIGMA — Earthquake Early Warning",w:"Apr – Jul 2026 · ITS Surabaya",s:"A seismic detection node that streams live data to a web dashboard.",p:["Developed the node with an MPU6050 accelerometer and GPS module.","Implemented the STA/LTA algorithm to filter movement noise from seismic data.","Configured Wi-Fi telemetry to stream real-time data to the web dashboard."],g:["ESP32","MPU6050","GNSS","STA/LTA"],i:["insamo-sigma-1.jpg","insamo-sigma-2.jpg"]},
+{k:"WX",h:160,cat:"IoT",t:"Low-Cost Weather Monitoring System",w:"Jan – Mar 2026 · ITS Surabaya",s:"A weather station for real-time wind, pressure, temperature and humidity.",p:["Integrated an anemometer, barometric pressure, temperature and humidity sensors.","Configured sensor interfacing and microcontroller data acquisition for continuous logging."],g:["Microcontroller","Data acquisition"],i:["weather-1.jpg","weather-2.jpg"]},
+{k:"PID",h:20,cat:"Automation",t:"PID DC Motor Speed Controller",w:"Aug – Dec 2025 · ITS Surabaya",s:"Closed-loop DC motor control paired with a VFD-driven AC motor.",p:["Designed and programmed a closed-loop PID speed controller on an ATmega328P with an L298 driver.","Paired the DC motor with an Arduino-controlled Shihlin SC3 VFD for AC motors."],g:["PID","ATmega328P","VFD"],i:["pid-1.jpg","pid-2.jpg"]}];
+
+const EX=[
+{t:"Laboratory Assistant, Lab PLC & SCS",o:"ITS Surabaya · Jan 2026 – Present",d:"Operate and maintain Omron CP2E and Mitsubishi Q Series PLC trainer kits, train students, and develop SCADA/HMI projects with CX-Programmer, ScadaBR and Haiwell Cloud SCADA.",i:"lab-plc"},
+{t:"Researcher and Technical Member, Pusdi MKPI",o:"Center for Disaster Management and Climate Change Studies, ITS · Jan 2026 – Present",d:"Ran field tests and sensor dataset collection across East Java, and co-organized the Gerakan 1000 Sahabat Tangguh Bencana training with BPBD and Damkar.",i:"pusdi-mkpi"},
+{t:"Staff of Human Resource Development, HMDTEO ITS",o:"Student Association of Electrical Automation Engineering · Feb 2026 – Dec 2026",d:"Coordinated cadre development and mentoring for junior cohorts across four pillars (Manajerial, Keilmiahan, Kewirausahaan, Minat Bakat), and ran leadership workshops and team-building.",i:"hmdteo"},
+{t:"Electrical Engineering Intern, VI-ROSE ITS Robotics Team",o:"Oct 2024 – Nov 2024",d:"Assembled hardware, integrated sensors, wired electrical systems, and designed custom PCBs and power distribution for autonomous robot prototypes.",i:"vi-rose"}];
+const ED=[
+{t:"Diploma in Applied Bachelor of Electrical Automation Engineering",o:"Institut Teknologi Sepuluh Nopember (ITS), Surabaya · Aug 2024 – Present · GPA 3.62/4.00",d:"Active in Lab PLC & SCS and Pusdi MKPI ITS, and in student organization management at HMDTEO ITS.",i:"its"},
+{t:"Senior High School, Natural Science (MIPA)",o:"SMA Negeri 1 Gedangan, Sidoarjo · Mar 2022 – May 2024",d:"Completed senior high school in the Natural Science (MIPA) program before starting at ITS.",i:"sma"}];
+const AW=[
+{t:"PKM-KC 1, PIMNAS 39",d:"Gold (presentation) and Silver (poster), Kemendikbudristek · Nov 2026",i:["pimnas-1.jpg","pimnas-2.jpg"]},
+{t:"National PLC Competition",d:"Top 20 national finalist · Oct 2026",i:["plc-competition-1.jpg","plc-competition-2.jpg"]},
+{t:"Instructor, Internal PLC Training",d:"Feb 2026",i:["plc-training-1.jpg","plc-training-2.jpg"]},
+{t:"Python Developer Certification",d:"Issued by freeCodeCamp · Mar 2026",i:["cert-python.jpg"],c:1},
+{t:"Junior Web Developer Certification",d:"Issued by BNSP · 2025",i:["cert-bnsp.jpg"],c:1}];
+
+/* theme */
+const root=document.documentElement,tb=$("#theme");
+let th;try{th=localStorage.getItem("th")}catch(e){}
+if(!th)th=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";
+const setTh=v=>{root.dataset.theme=v;tb.textContent=v=="dark"?"☀️":"🌙";try{localStorage.setItem("th",v)}catch(e){}};
+setTh(th);tb.onclick=()=>setTh(root.dataset.theme=="dark"?"light":"dark");
+
+/* typing */
+const words=["embedded systems","IoT hardware","PLC & SCADA","edge AI models","flood and quake sensors"],w=$("#w");
+if(calm){w.textContent=words[0]}else{let i=0,c=0,del=false;(function tick(){const s=words[i];c+=del?-1:1;w.textContent=s.slice(0,c);let d=del?35:80;
+if(!del&&c==s.length){del=true;d=1400}else if(del&&c==0){del=false;i=(i+1)%words.length;d=300}setTimeout(tick,d)})()}
+
+/* skills tabs */
+const st=$("#stabs"),sp=$("#spills");
+Object.keys(SK).forEach((k,n)=>{const b=document.createElement("button");b.className="chip";b.textContent=k;b.setAttribute("aria-pressed",n==0);
+b.onclick=()=>{$$(".chip",st).forEach(x=>x.setAttribute("aria-pressed",x==b));sp.innerHTML=SK[k].map(x=>`<span class="pill">${x}</span>`).join("")};st.append(b)});
+sp.innerHTML=SK.Hardware.map(x=>`<span class="pill">${x}</span>`).join("");
+
+/* projects */
+const pg=$("#pg"),pf=$("#pf");
+pg.innerHTML=PR.map((p,n)=>`<article class="card proj rv" data-cat="${p.cat}" data-n="${n}" tabindex="0" role="button" aria-label="Open ${p.t}"><div class="cover" data-t="${p.k}" style="--h:${p.h}"><img src="images/${p.i[0]}" alt="${p.t}" loading="lazy" onerror="fb(this)"></div><div class="pb"><h3>${p.t}</h3><p>${p.s}</p><div class="tags">${p.g.slice(0,3).map(x=>`<span>${x}</span>`).join("")}</div></div></article>`).join("");
+["All","AI","IoT","Automation"].forEach((c,n)=>{const b=document.createElement("button");b.className="chip";b.textContent=c;b.setAttribute("aria-pressed",n==0);
+b.onclick=()=>{$$(".chip",pf).forEach(x=>x.setAttribute("aria-pressed",x==b));$$(".proj").forEach(a=>a.hidden=!(c=="All"||a.dataset.cat.split(" ").includes(c)))};pf.append(b)});
+const dlg=$("#dlg"),openP=n=>{const p=PR[n];$("#dlb").innerHTML=`<h3>${p.t}</h3><p class="meta">${p.w}</p><ul>${p.p.map(x=>`<li>${x}</li>`).join("")}</ul><div class="tags" style="margin:0 0 .5rem">${p.g.map(x=>`<span>${x}</span>`).join("")}</div><div class="gal">${p.i.map(f=>im(f,p.t)).join("")}</div>`;dlg.showModal()};
+pg.onclick=e=>{const a=e.target.closest(".proj");if(a)openP(a.dataset.n)};
+pg.onkeydown=e=>{if(e.key=="Enter"||e.key==" "){const a=e.target.closest(".proj");if(a){e.preventDefault();openP(a.dataset.n)}}};
+
+/* accordions */
+const acc=(arr,el)=>{$(el).innerHTML=arr.map((x,n)=>`<details class="card acc rv"${n==0?" open":""}><summary><span><b>${x.t}</b><small>${x.o}</small></span></summary><div class="ab"><p>${x.d}</p><div class="gal">${im(x.i+"-1.jpg",x.t)}${im(x.i+"-2.jpg",x.t)}</div></div></details>`).join("")};
+acc(EX,"#ex");acc(ED,"#ed");
+$("#aw").innerHTML=AW.map(a=>`<article class="card award rv${a.c?" cert":""}"><div class="gal">${a.i.map(f=>im(f,a.t)).join("")}</div><div class="tx"><h3>${a.t}</h3><p>${a.d}</p></div></article>`).join("");
+
+/* dialogs */
+const lb=$("#lb");
+document.addEventListener("click",e=>{
+ if(e.target.matches(".ph img")){$("img",lb).src=e.target.src;$("img",lb).alt=e.target.alt;lb.showModal()}
+ if(e.target===dlg)dlg.close();if(e.target===lb||e.target.closest("#lb"))lb.close()});
+
+/* copy email */
+const toast=$("#toast");
+$("#mail").onclick=async e=>{const m=e.currentTarget.dataset.mail;let ok=true;try{await navigator.clipboard.writeText(m)}catch(x){ok=false}
+ toast.textContent=ok?"Email copied ✓":m;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),1800)};
+
+/* reveal, counters, nav highlight, back to top */
+const cnt=el=>{const n=+el.dataset.n,d=+el.dataset.d||0;if(calm){el.textContent=n.toFixed(d);return}
+ const t0=performance.now();(function f(t){const p=Math.min((t-t0)/1200,1);el.textContent=(n*(1-Math.pow(1-p,3))).toFixed(d);if(p<1)requestAnimationFrame(f)})(t0)};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");const b=$("b[data-n]",e.target);if(b&&!b.dataset.done){b.dataset.done=1;cnt(b)}io.unobserve(e.target)}}),{threshold:.15});
+$$(".rv").forEach(x=>io.observe(x));
+const links=$$(".links a"),so=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.hash=="#"+e.target.id))}),{rootMargin:"-40% 0px -55% 0px"});
+$$("main section,footer").forEach(s=>so.observe(s));
+const tp=$("#top");addEventListener("scroll",()=>tp.classList.toggle("show",scrollY>600),{passive:true});
+tp.onclick=()=>scrollTo({top:0});
+</script>
+</body>
+</html>
